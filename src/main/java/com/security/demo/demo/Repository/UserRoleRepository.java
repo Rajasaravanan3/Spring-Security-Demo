@@ -16,6 +16,6 @@ public interface UserRoleRepository extends JpaRepository<UserRole, Long> {
     Set<User> findRolesByUserId(@Param("userId") Long userId);
 
     @Query("Select u from User u inner join UserRole ur on u.userId = ur.user.userId inner join Role r on ur.role.roleId = r.roleId where r.roleId = :roleId")
-    Set<User> findUsersByRoleId(@Param("roleId") Long roleId);
+    Set<Role> findUsersByRoleId(@Param("roleId") Long roleId);
 
 }

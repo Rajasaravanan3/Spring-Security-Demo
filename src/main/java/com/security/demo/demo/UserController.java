@@ -5,14 +5,11 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-// import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.security.demo.demo.Entity.Role;
 import com.security.demo.demo.Entity.User;
-import com.security.demo.demo.Entity.UserRole;
 import com.security.demo.demo.Service.UserRoleService;
 import com.security.demo.demo.Service.UserService;
 
@@ -35,7 +32,6 @@ public class UserController {
     public ResponseEntity<User> getUserById(@PathVariable("username") String username) {
         
         User user = userService.getUserByUsername(username);
-        System.out.println("------------" + user.getUsername());
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
