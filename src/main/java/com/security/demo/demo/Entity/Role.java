@@ -1,15 +1,23 @@
-package com.security.demo.demo;
+package com.security.demo.demo.Entity;
 
-import org.springframework.security.core.GrantedAuthority;
+import java.util.HashSet;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+// import org.springframework.security.core.GrantedAuthority;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 
 @Entity
-public class Role implements GrantedAuthority {
+public class Role {//implements GrantedAuthority {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +26,15 @@ public class Role implements GrantedAuthority {
 
     @Column(name = "role_name")
     private String roleName;
+
+    @ManyToMany(mappedBy = "roles")
+    @JsonIgnoreProperties("roles")
+    private Set<User> users = new HashSet<>();
+
+    // @Override
+    // public String getAuthority() {
+    //     return this.roleName;
+    // }
 
     public Role() {}
 
@@ -46,8 +63,11 @@ public class Role implements GrantedAuthority {
         this.roleName = roleName;
     }
 
-    @Override
-    public String getAuthority() {
-        return this.roleName;
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 }
