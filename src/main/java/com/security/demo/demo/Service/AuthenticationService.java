@@ -3,11 +3,9 @@ package com.security.demo.demo.Service;
 import com.security.demo.demo.Entity.User;
 
 import java.util.HashMap;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -26,8 +24,8 @@ public class AuthenticationService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
+    // @Autowired
+    // private AuthenticationManager authenticationManager;
 
     @Autowired
     private JWTService jwtService;
