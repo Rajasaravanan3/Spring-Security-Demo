@@ -2,6 +2,8 @@ drop database security;
 create database security;
 use security;
 
+-- create an admin when creating an organization
+
 create table role(
 	role_id bigint unsigned auto_increment primary key,
     role_name varchar(50) not null
